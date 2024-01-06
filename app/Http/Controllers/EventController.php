@@ -46,6 +46,27 @@ class EventController extends Controller
         return to_route('events');
     }
 
+    public function editEventForm($id): View
+    {
+        return view('Event.create', [
+            'event' => Event::query()->findOrFail($id),
+            'users' => User::all(),
+        ]);
+    }
+
+    public function editEvent($id, Request $request): RedirectResponse
+    {
+        $event = Event::query()->findOrFail($id);
+        $event->update([
+            'title' => $request->input('title'),
+            'user_id' => $request->input('user_id'),
+            'notes' => $request->input('notes'),
+            'dt_start' => $request->input('dt_start'),
+            'dt_end' => $request->input('dt_end'),
+        ]);
+        return to_route('events');
+    }
+
     public function deleteEvent($id): RedirectResponse
     {
         $event = Event::query()->findOrFail($id);

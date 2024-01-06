@@ -5,14 +5,14 @@
             <label for="name" class="form-label">
                 Please, write your Full name
             </label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" value="{{$user->name}}">
         </div>
 
         <div class="col-3">
             <label for="email" class="form-label">
                 Provide an email
             </label>
-            <input class="form-input" type="text" name="email" id="email">
+            <input class="form-input" type="text" name="email" id="email" value="{{$user->email}}">
             @if(isset($_GET['errNo']))
                 <br><br>
                 <span class="alert alert-danger">Email address is taken!</span>

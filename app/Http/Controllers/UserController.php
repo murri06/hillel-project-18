@@ -44,10 +44,34 @@ class UserController extends Controller
         return to_route('users');
     }
 
+    public function editUserForm($id): View
+    {
+        return view('Users.create', [
+            'user' => User::query()->findOrFail($id),
+        ]);
+    }
+
+    public function editUser($id, Request $request): RedirectResponse
+    {
+        $checkEmail = trim($request->input('email'));
+        if (User::query()->where('email', $checkEmail)->whereNot('id', $id)->count() > 0) {
+            return to_route('usersEdit', ['errNo' => '1']);
+        }
+
+        $user = User::query()->findOrFail($id);
+        $user->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'email_verified_at' => now(),
+            'password' => Hash::make($request->input('password')),
+        ]);
+        return to_route('users');
+    }
+
     public function deleteUser($id): RedirectResponse
     {
         $user = User::query()->findOrFail($id);
         $user->delete();
-        return redirect()->route('users');
+        return to_route('users');
     }
 }

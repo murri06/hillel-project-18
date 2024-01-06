@@ -1,5 +1,6 @@
 <x-layout>
     <a href="/events" class="btn btn-secondary">Back</a>
+    <a href="/events/edit/{{$event->id}}" class="btn btn-info">Edit</a>
     <a href="/events/delete/{{$event->id}}" class="btn btn-danger">Delete</a>
     <div class="container" style="padding-top: 20px">
         <h2>Title: {{$event->title}}</h2>

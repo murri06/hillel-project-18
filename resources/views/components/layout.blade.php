@@ -5,6 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>{{ $title ?? 'Hillel' }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
