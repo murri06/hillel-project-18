@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->has(Event::factory()->count(2))->create();
+        User::factory()->has(Event::factory()->count(2))->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
